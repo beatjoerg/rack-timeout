@@ -27,7 +27,7 @@ module Rack::Timeout::ClassLevelProperties
 
   module InstanceMethods
     def read_timeout_property_with_class_override property_name
-      read_timeout_property self.class.send(property_name), method(property_name).super_method.call
+      read_timeout_property self.class.send(property_name), self.class.superclass.instance_method(property_name).bind(self).call
     end
 
     [:service_timeout, :wait_timeout, :wait_overtime].each do |m|
