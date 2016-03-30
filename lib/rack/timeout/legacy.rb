@@ -43,4 +43,4 @@ end
 
 
 Rack::Timeout.extend  Rack::Timeout::ClassLevelProperties::ClassMethods
-Rack::Timeout.prepend Rack::Timeout::ClassLevelProperties::InstanceMethods
+Rack::Timeout.send :prepend, Rack::Timeout::ClassLevelProperties::InstanceMethods
